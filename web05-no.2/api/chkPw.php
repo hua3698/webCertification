@@ -6,7 +6,9 @@ $pw=$_POST['pw'];
 
 $chk=$Mem->count(['acc'=>$acc,'pw'=>$pw]);
 
-if($chk) echo 1; //表示帳密正確
-else echo 0;
+if($chk){
+    echo 1; //表示帳密正確
+    $_SESSION['login']=$acc;
+} else echo 0;
 
 ?>

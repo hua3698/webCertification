@@ -35,7 +35,27 @@
                         <marquee>請民眾踴躍投稿電子抱，讓電子報成為大家互相交流、分享的園地！詳見最新文章</marquee>
                     </span>
                     <span style="width:18%; display:inline-block;">
-                        <a href="?do=login">會員登入</a>
+                        <?php
+                        if(empty($_SESSION['login'])){
+                            ?>
+                            <a href="?do=login">會員登入</a>
+                            <?php
+                        }else{
+                            ?>
+                            歡迎，<?=$_SESSION['login'];?><br>
+                            <?php
+                            if($_SESSION['login']=='admin'){
+                                ?>
+						<a href="backend.php"><button>管理</button></a>|
+						<a href="api/logout.php"><button>登出</button></a>
+                        <?php
+                            }else{
+                                ?>
+                                <a href="api/logout.php"><button>登出</button></a>
+                                <?php
+                            }
+                        }
+                        ?>
                     </span>
                     <div class="">
                     </div>

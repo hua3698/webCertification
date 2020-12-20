@@ -17,7 +17,7 @@
 	</div>
 	<div id="all">
 		<div id="title">
-		<?=date("m月d日 l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 累積瀏覽:<?=$Total->q("select sum(`total`) from `total`")[0][0];?> <a href="index.php" style="float: right;">回首頁</a></div>
+			<?= date("m月d日 l"); ?> | 今日瀏覽: <?= $Total->find(['date' => date("Y-m-d")])['total']; ?> | 累積瀏覽:<?= $Total->q("select sum(`total`) from `total`")[0][0]; ?> <a href="index.php" style="float: right;">回首頁</a></div>
 		<div id="title2">
 			<a href="index.php"><img src="icon/02B01.jpg" style="width:100%" title="健康促進網-回首頁"></a>
 		</div>
@@ -31,19 +31,37 @@
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<span style="width:80%; display:inline-block;">
+					<span style="width:78%; display:inline-block;">
 						<marquee>請民眾踴躍投稿電子抱，讓電子報成為大家互相交流、分享的園地！詳見最新文章</marquee>
 					</span>
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+					<span style="width:20%; display:inline-block;">
+						<?php
+						if (empty($_SESSION['login'])) {
+							echo "<a href='?do=login'>會員登入</a>";
+						} else {
+							if ($_SESSION['login'] == 'admin') {
+						?>
+								歡迎，<?= $_SESSION['login']; ?><br>
+								<a href="backend.php"><button>管理</button></a>|
+								<a href="api/logout.php"><button>登出</button></a>
+							<?php
+							} else {
+							?>
+								歡迎，<?= $_SESSION['login']; ?>
+								<a href="api/logout.php"><button>登出</button></a>
+						<?php
+							}
+						}
+
+						?>
 					</span>
 					<div class="">
-					<?php	
-					$do=(isset($_GET['do']))?$_GET['do']:'main';
-					$file="front/$do.php";
-					if(file_exists($file)) include_once $file;
-					else include_once "front/main.php";
-					?>
+						<?php
+						$do = (isset($_GET['do'])) ? $_GET['do'] : 'main';
+						$file = "front/$do.php";
+						if (file_exists($file)) include_once $file;
+						else include_once "front/main.php";
+						?>
 					</div>
 				</div>
 			</div>
