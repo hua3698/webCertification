@@ -4,7 +4,7 @@ session_start();
 
 $Total=new DB('total');
 $Mem=new DB('member');
-
+$News=new DB('news');
 
 
 
