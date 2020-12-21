@@ -3,19 +3,18 @@ function lo(th,url)
 {
 	$.ajax(url,{cache:false,success: function(x){$(th).html(x)}})
 }
-function good(id,type,user)
-{
-	$.post("back.php?do=good&type="+type,{"id":id,"user":user},function()
-	{
-		if(type=="1")
-		{
-			$("#vie"+id).text($("#vie"+id).text()*1+1)
-			$("#good"+id).text("收回讚").attr("onclick","good('"+id+"','2','"+user+"')")
+
+function good(news,acc,type){ //文章id 誰 方式(1讚,2收回讚)
+	$.post("api/good.php",{news,acc,type},function(){
+		if(type=="1"){
+			$("#vie"+news).text($("#vie"+news).text()*1+1)
+			$("#news"+news).text("收回讚").attr("onclick","good('"+news+"','"+acc+"','2')")
+			console.log("")
 		}
-		else
-		{
-			$("#vie"+id).text($("#vie"+id).text()*1-1)
-			$("#good"+id).text("讚").attr("onclick","good('"+id+"','1','"+user+"')")
+		else{
+			$("#vie"+news).text($("#vie"+news).text()*1-1)
+			$("#news"+news).text("讚").attr("onclick","good('"+news+"','"+acc+"','1')")
 		}
 	})
 }
+

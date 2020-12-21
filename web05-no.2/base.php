@@ -5,7 +5,7 @@ session_start();
 $Total=new DB('total');
 $Mem=new DB('member');
 $News=new DB('news');
-
+$Log=new DB('log');
 
 
 $chk=$Total->find(['date'=>date("Y-m-d")]);
