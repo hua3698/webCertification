@@ -22,12 +22,12 @@
             <a href="index.php"><img src="icon/02B01.jpg" style="width:100%" title="健康促進網-回首頁"></a>
         </div>
         <div id="mm">
-            <div class="hal" id="lef">
+            <div class="hal ct" id="lef">
+                <a class="blo" href="?do=admin">帳號管理</a>
                 <a class="blo" href="?do=po">分類網誌</a>
-                <a class="blo" href="?do=news">最新文章</a>
-                <a class="blo" href="?do=pop">人氣文章</a>
-                <a class="blo" href="?do=know">講座訊息</a>
-                <a class="blo" href="?do=que">問卷調查</a>
+                <a class="blo" href="?do=news">最新文章管理</a>
+                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
                 <div>
@@ -58,6 +58,12 @@
                         ?>
                     </span>
                     <div class="">
+                    <?php
+						$do = (isset($_GET['do'])) ? $_GET['do'] : 'main';
+						$file = "backend/$do.php";
+						if (file_exists($file)) include_once $file;
+						else include_once "backend/main.php";
+						?>
                     </div>
                 </div>
             </div>

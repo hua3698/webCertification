@@ -45,6 +45,7 @@
                 else{
                     $.post("api/reg.php",{acc,pw,email},function(){
                         alert("註冊完成，歡迎")
+                        location.href="?do=login"
                     })
                 }
             })
