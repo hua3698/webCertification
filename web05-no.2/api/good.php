@@ -10,12 +10,21 @@ switch($_POST['type']){
             'acc'=>$_POST['acc'],
             'news'=>$_POST['news']
         ]);
+
+        //從front/pop.php按讚的紀錄寫進資料庫+1
+        $news=$News->find($_POST['news']);
+        $news['good']++;
+        $News->save($news);
         break;
     case "2":
         $Log->del([
             'acc'=>$_POST['acc'],
             'news'=>$_POST['news']
         ]);
+
+        $news=$News->find($_POST['news']);
+        $news['good']--;
+        $News->save($news);
         break;
 }
 
