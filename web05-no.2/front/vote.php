@@ -8,9 +8,7 @@ $option = $Que->all(['subject' => $id]);
     <legend>目前位置：首頁 > 問卷調查 > <?= $subject['text']; ?></legend>
     <form action="api/vote.php" method="post">
         <table>
-            <tr>
-                <td><?= $subject['text']; ?></td>
-            </tr>
+                <h3><?= $subject['text']; ?></h3>
             <?php
             // print_r($ques);
 

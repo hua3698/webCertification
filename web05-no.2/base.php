@@ -97,7 +97,7 @@ class DB{
             }else{
                 $sql .= " `id` ='{$id}'";
             }
-            print_r($sql);
+            // print_r($sql);
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
