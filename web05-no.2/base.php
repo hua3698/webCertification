@@ -6,6 +6,7 @@ $Total=new DB('total');
 $Mem=new DB('member');
 $News=new DB('news');
 $Log=new DB('log');
+$Que=new DB('que');
 
 $typeStr=[
     1=>"健康新知 ",
@@ -83,6 +84,7 @@ class DB{
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+
     function find($id){
         $sql="select * from $this->table where ";
 
@@ -95,10 +97,10 @@ class DB{
             }else{
                 $sql .= " `id` ='{$id}'";
             }
-
-
+            print_r($sql);
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
+
     function del($id){
         $sql="delete from $this->table where ";
 
