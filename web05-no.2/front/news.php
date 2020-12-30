@@ -28,11 +28,11 @@
                         $chk = $Log->count(['acc' => $_SESSION['login'], 'news' => $news['id']]);
                         if ($chk) {//chk有值>>表示已經有按讚紀錄
                     ?>
-                            <a href="#" id="news<?= $news['id']; ?>" onclick="good('<?= $news['id']; ?>','<?= $_SESSION['login']; ?>','2')">收回讚</a>
+                            <a href="#" class="gd" id="news<?= $news['id']; ?>">收回讚</a>
                         <?php
                         } else {
                         ?>
-                            <a href="#" id="news<?= $news['id']; ?>" onclick="good('<?= $news['id']; ?>','<?= $_SESSION['login']; ?>','1')">讚</a>
+                            <a href="#" class="gd" id="news<?= $news['id']; ?>">讚</a>
                     <?php
                         }
                     }
@@ -71,4 +71,18 @@
     })
 
     // let header=document.addEventListener.()
+
+    $(".gd").on("click",function(){
+        let id=$(this).attr("id");
+        let text=$(this).text();
+        console.log(id)
+
+        if(text=='讚') $(this).text('收回讚')
+        else $(this).text('讚')
+        $.post("api/good.php",{id},function(e){
+            console.log(e)
+        })
+    })
+    //寫在裡面的function就是回呼函式callback，當某件事觸發時，就做function裡面的事情
+
 </script>
