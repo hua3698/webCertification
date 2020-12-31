@@ -4,7 +4,7 @@
     }
 </style>
 <h3 class="ct">新增院線片</h3>
-<form action="api/add_movie.php" method="post" enctype="multipart/form-data">
+<form action="api/save_movie.php" method="post" enctype="multipart/form-data">
     <table style="width: 100%;">
         <tr>
             <td width:20% style="vertical-align: top;">影片資料</td>

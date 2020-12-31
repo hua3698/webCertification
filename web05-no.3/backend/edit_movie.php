@@ -2,7 +2,7 @@
 $movie=$Movie->find($_GET['id']);
 ?>
 <h3 class="ct">編輯院線片</h3>
-<form action="api/edit_movie.php" method="post" enctype="multipart/form-data">
+<form action="api/save_movie.php" method="post" enctype="multipart/form-data">
     <table style="width: 100%;">
         <tr>
             <td width:20% style="vertical-align: top;">影片資料</td>
