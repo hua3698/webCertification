@@ -13,9 +13,10 @@ if(!empty($_FILES['poster']['tmp_name'])){
 }
 
 $_POST['sh']=1;
-$data['rank']=$Movie->q("select max(rank) from movie")[0][0]+1;
+$_POST['rank']=$Movie->q("select max(rank) from movie")[0][0]+1;
 
 $Movie->save($_POST);
 
 // 檔案資料庫欄位要設為允許空值
+to("../backend.php?do=movie");
 ?>
