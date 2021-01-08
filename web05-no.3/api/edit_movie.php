@@ -15,6 +15,7 @@ if(!empty($_FILES['poster']['tmp_name'])){
     move_uploaded_file($_FILES['poster']['tmp_name'],'../img/'.$_FILES['poster']['name']);
 }
 
+$_POST['ondate']=$_POST['year']."-".$_POST['month']."-".$_POST['day'];
 foreach ($movie as $key => $value) {
     if(isset($_POST[$key])){
         if($value!=$_POST[$key]){
@@ -22,7 +23,7 @@ foreach ($movie as $key => $value) {
         }
     }
 }
-
+// echo $_POST['ondate'];
 // $_POST['sh']=1;
 // $data['rank']=$Movie->q("select max(rank) from movie")[0][0]+1;
 

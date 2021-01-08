@@ -52,6 +52,7 @@ class DB{
         if(isset($arg[1])){
             $sql .=$arg[1];
         }
+        // print_r($sql);
         return $this->pdo->query($sql)->fetchColumn();
     }
 
@@ -93,7 +94,7 @@ class DB{
         }else{
             $sql= "insert into $this->table (`".implode("`,`",array_keys($arr))."`) values('".implode("','",$arr)."') ";
         }
-        // print_r($sql);
+        // echo($sql);
         return $this->pdo->exec($sql);
     }
     
