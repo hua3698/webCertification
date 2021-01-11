@@ -73,11 +73,9 @@
     function getSessions() {
         let movie = $("#movie").val()
         let date = $("#date").val()
-        $.get("api/get_session.php", {
-            movie,
-            date
-        }, function(sessions) {
+        $.get("api/get_session.php", {movie,date}, function(sessions) {
             $("#session").html(sessions)
+            // console.log(sessions)
         })
     }
 

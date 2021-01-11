@@ -17,9 +17,10 @@ if($now<=13){
     $start=1;
 }else{
     $start=ceil(($now-13)/2)+1;
+    // echo $start;
 }
 
-if($date==date("y-m-d")){
+if($date==date("Y-m-d")){
     for ($i=$start; $i <=5 ; $i++) { 
         echo "<option value='$i'>{$sess[$i]} 剩餘座位 20 </option>";
     }
