@@ -100,6 +100,7 @@ class DB{
     }
     
     function q($sql){
+        // echo $sql;
         return $this->pdo->query($sql)->fetchAll();
     }
 }

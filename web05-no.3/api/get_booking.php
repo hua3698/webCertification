@@ -12,6 +12,17 @@ $sess = [
 $movie = $Movie->find($_GET['movie']);
 $date = $_GET['date'];
 $session = $_GET['session'];
+$orders=$Order->all([
+    'movie'=>$movie['name'],
+    'date'=>$date,
+    'session'=>$sess[$session]
+]);
+$seats=[];
+foreach($orders as $or){
+    $tmp=unserialize($or['seats']);
+    $seats=array_merge($seats,$tmp);
+}
+
 ?>
 <style>
     .seat {
@@ -40,9 +51,15 @@ $session = $_GET['session'];
     <div style="width:310px;height:328px;margin:auto;display:flex;flex-wrap:wrap">
         <?php
         for ($i = 0; $i < 20; $i++) {
-            echo "<div class='seat empty'>";
+            if(in_array($i,$seats)){
+                echo "<div class='seat booked'>";
+            }else{
+                echo "<div class='seat empty'>";
+            }
             echo (floor($i / 5) + 1) . "排" . ($i % 5 + 1) . "號";
-            echo "<input type='checkbox' value='$i' class='chk'>";
+            if(!in_array($i,$seats)){
+                echo "<input type='checkbox' value='$i' class='chk'>";
+            }
             echo "</div>";
         }
         ?>
