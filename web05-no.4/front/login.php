@@ -27,4 +27,6 @@
     </td>
 </tr>
 </table>
-<div class="ct"><button onclick="login('mem')">確認</button></div>
+<div class="ct">
+    <button onclick="login('mem')">確認</button>
+</div>
