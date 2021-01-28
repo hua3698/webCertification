@@ -6,6 +6,8 @@ $Bottom=new DB('bottom');
 $Mem=new DB('mem');
 $Admin=new DB('admin'); 
 $Type=new DB('type');
+$Goods=new DB("goods");
+$Ord=new DB("ord");
 
 class DB{
     protected $dsn="mysql:host=localhost;dbname=db04;charset=utf8";
@@ -46,11 +48,12 @@ class DB{
                 foreach($arg[0] as $key => $value){
                     $tmp[]=sprintf("`%s`='%s'",$key,$value);
                 }
+            }else{
+                $sql .=$arg[0];
             }
             $sql .="where ".implode(" && ",$tmp);
-        }else{
-            $sql .=$arg[0];
         }
+
         if(isset($arg[1])){
             $sql .=$arg[1];
         }

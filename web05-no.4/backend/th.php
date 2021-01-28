@@ -24,42 +24,80 @@
     foreach ($bigs as $big) {
     ?>
         <tr class="tt">
-            <td id="t<?=$big['id'];?>"><?= $big['name']; ?></td>
+            <td id="t<?= $big['id']; ?>"><?= $big['name']; ?></td>
             <td>
-                <button onclick="edit(<?=$big['id'];?>,'<?=$big['name'];?>')">修改</button>
-                <button onclick="del('type',<?=$big['id'];?>)">刪除</button>
+                <button onclick="edit(<?= $big['id']; ?>,'<?= $big['name']; ?>')">修改</button>
+                <button onclick="del('type',<?= $big['id']; ?>)">刪除</button>
             </td>
         </tr>
-    <?php
-    $mids=$Type->all(['parent'=>$big['id']]);
-    if(!empty($mids)){
-        foreach ($mids as $mid) {
-        ?>
-    <tr class='pp'>
-        <td id="t<?=$mid['id'];?>" class="ct"><?=$mid['name'];?></td>
-        <td>
-            <button onclick="edit(<?=$mid['id'];?>,'<?=$mid['name'];?>')">修改</button>
-            <button onclick="del('type',<?=$mid['id'];?>)">刪除</button>
-        </td>
-    </tr>
-
         <?php
+        $mids = $Type->all(['parent' => $big['id']]);
+        if (!empty($mids)) {
+            foreach ($mids as $mid) {
+        ?>
+                <tr class='pp'>
+                    <td id="t<?= $mid['id']; ?>" class="ct"><?= $mid['name']; ?></td>
+                    <td>
+                        <button onclick="edit(<?= $mid['id']; ?>,'<?= $mid['name']; ?>')">修改</button>
+                        <button onclick="del('type',<?= $mid['id']; ?>)">刪除</button>
+                    </td>
+                </tr>
+
+    <?php
+            }
         }
     }
-}
-?>
+    ?>
 </table>
 <hr>
 <h2 class="ct">商品管理</h2>
 <div class="ct"><button onclick="lof('?do=add_goods')">新增商品</button></div>
+<table class="all">
+    <tr class="tt">
+        <td>編號</td>
+        <td>商品名稱</td>
+        <td>庫存量</td>
+        <td>狀態</td>
+        <td>操作</td>
+    </tr>
+    <?php
+    $goods = $Goods->all();
+    foreach ($goods as $g) {
+    ?>
+        <tr class='pp'>
+            <td><?=$g['num'];?></td>
+            <td><?=$g['name'];?></td>
+            <td><?=$g['quota'];?></td>
+            <td><?=($g['sh']==1)?"販售中":"以下嫁";?></td>
+            <td>
+                <button onclick="lof('?do=edit_goods&id=<?=$g['id'];?>')">修改</button>
+                <button onclick="del('goods',<?=$g['id'];?>)">刪除</button>
+                <button onclick="sh(1,<?=$g['id'];?>)">上架</button>
+                <button onclick="sh(2,<?=$g['id'];?>)">下嫁</button>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+
+</table>
 
 <script>
-    function edit(id,name){
-        let result=prompt("修改分類名稱為：",name);
-        if(result){
-            $.post("api/edit_type.php",{id,result},function(){
-                $("#t"+id).html(result)
+    function edit(id, name) {
+        let result = prompt("修改分類名稱為：", name);
+        if (result) {
+            $.post("api/edit_type.php", {
+                id,
+                result
+            }, function() {
+                $("#t" + id).html(result)
             })
         }
+    }
+
+    function sh(type,id){
+        $.post("api/sh.php",{type,id},function(){
+            location.reload();
+        })
     }
 </script>
