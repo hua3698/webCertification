@@ -1,4 +1,16 @@
-<?php include_once "base.php" ?>
+<?php include_once "base.php";
+if(isset($_GET['do']) && $_GET['do']=='buycart'){
+
+    if(isset($_GET['goods'])){
+        $_SESSION['cart'][$_GET['goods']]=$_GET['qt'];
+    }
+
+    if(empty($_SESSION['mem'])){
+        to("../index.php?do=login");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,9 +33,9 @@
             </a>
             <div style="padding:10px;">
                 <a href="index.php">回首頁</a> |
-                <a href="index.php?do=news">最新消息</a> |
-                <a href="index.php?do=look">購物流程</a> |
-                <a href="index.php?do=buycart">購物車</a> |
+                <a href="?do=news">最新消息</a> |
+                <a href="?do=look">購物流程</a> |
+                <a href="?do=buycart">購物車</a> |
                 <?php if (empty($_SESSION['mem'])) echo "<a href='index.php?do=login'>會員登入</a> |";
                 else echo "<a href='backend/logout.php?do=mem'>登出</a> |" ?>
                 <?php if (empty($_SESSION['admin'])) echo "<a href='index.php?do=admin'>管理登入</a>";
