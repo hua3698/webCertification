@@ -1,0 +1,29 @@
+<h2>管理登入</h2>
+<table class="all">
+<tr>
+    <td class="tt">帳號</td>
+    <td class="pp"><input type="text" name="acc" id="acc"></td>
+</tr>
+<tr>
+    <td class="tt">密碼</td>
+    <td class="pp"><input type="password" name="pw" id="pw"></td>
+</tr>
+<tr>
+<td class="tt">驗證碼</td>
+    <td class="pp">
+    <?php
+    $a=rand(10,99);
+    $b=rand(10,99);
+    $_SESSION['ans']=$a+$b;
+    //將答案用SESSION存在伺服器端
+
+    echo $a."+".$b."=";
+    ?>
+    <input type="text" name="ans" id="ans">
+    </td>
+</tr>
+</table>
+<div class="ct">
+    
+    <button onclick="login('admin')">確認</button>
+</div>
