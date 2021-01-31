@@ -12,7 +12,6 @@ if(empty($_SESSION['login'])){
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 	<title>卓越科技大學校園資訊系統</title>
 	<link href="css.css" rel="stylesheet" type="text/css">
 	<script src="jquery-1.9.1.min.js"></script>
@@ -81,7 +80,7 @@ if(empty($_SESSION['login'])){
 				</table>
 
 				<?php
-				$do = isset($_GET['do']) ? $_GET['do'] : 'main';
+				$do = isset($_GET['do']) ? $_GET['do'] : 'title';
 				$file = "./backend/".$do . ".php";
 				if (file_exists($file)) {
 					include $file;

@@ -33,6 +33,7 @@
             now++;
             if (now >= lin.length)
                 now = 0;
+                
         }
     </script>
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">

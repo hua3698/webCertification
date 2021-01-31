@@ -12,7 +12,7 @@
                 <td><span id="result"></span></td>
             </tr>
             <tr>
-                <td><button onClick="findPw()">尋找</button></td>
+                <td><button onclick="findPw()">尋找</button></td>
             </tr>
         </table>
     </fieldset>

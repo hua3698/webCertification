@@ -1,6 +1,6 @@
 <?php 
 include_once "../base.php";
-print_r($_POST); 
+print_r($_POST['name']); 
 
 
 foreach($_POST['id'] as $key => $id){

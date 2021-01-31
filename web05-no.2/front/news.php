@@ -67,7 +67,6 @@
         // $(this).next().children('.title').hide()
         // $(this).next().children('.text').show()
         // let id=$(this).attr("id");  //this指的是當我 onclick點擊 的這個事件，並找到他的id屬性的值
-
     })
 
     // let header=document.addEventListener.()

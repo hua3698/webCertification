@@ -65,7 +65,6 @@
 			} else {
 				include "./front/main.php";
 			}
-
 			?>
 
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">

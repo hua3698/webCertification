@@ -17,7 +17,7 @@
 
 <script>
     function more(){
-        let oscripttion=`<tr>
+        let option=`<tr>
                 <td>選項<input type="text" name="option[]" id=""></td>
             </tr>`
         $("#more").before(option)

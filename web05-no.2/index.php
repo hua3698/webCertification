@@ -52,7 +52,6 @@
 						<?php
 							}
 						}
-
 						?>
 					</span>
 					<div class="">

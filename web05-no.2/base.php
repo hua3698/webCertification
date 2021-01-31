@@ -32,7 +32,6 @@ if(empty($chk) && empty($_SESSION['total'])){
     $chk['total']++;
     $Total->save($chk);
     $_SESSION['total']=1;
-
 }
 
 

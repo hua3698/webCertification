@@ -24,9 +24,9 @@
         <div id="mm">
             <div class="hal ct" id="lef">
                 <a class="blo" href="?do=admin">帳號管理</a>
-                <a class="blo" href="?do=po">分類網誌</a>
+                <a class="blo" href="?do=#">分類網誌</a>
                 <a class="blo" href="?do=news">最新文章管理</a>
-                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?do=#">講座管理</a>
                 <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
@@ -58,7 +58,7 @@
                         ?>
                     </span>
                     <div class="">
-                    <?php
+                        <?php
 						$do = (isset($_GET['do'])) ? $_GET['do'] : 'main';
 						$file = "backend/$do.php";
 						if (file_exists($file)) include_once $file;
