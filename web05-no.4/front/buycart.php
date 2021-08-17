@@ -3,7 +3,7 @@ if (isset($_GET['goods'])) {
     $_SESSION['cart'][$_GET['goods']] = $_GET['qt'];
 }
 if (empty($_SESSION['login'])) {
-    to("../index.php?do=login");
+    to("./index.php?do=login");
     exit();
 }
 
